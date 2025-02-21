@@ -1,0 +1,35 @@
+/*
+const http = require("http");
+
+const requestListener = (req, res) => {
+  res.writeHead(200,{"Content-Type":"text/plain"});
+  res.write("hello");
+  res.end();
+}
+
+const server = http.createServer(requestListener);
+server.listen(8080);
+*/
+
+const http = require("http");
+
+const requestListener = function(req,res){
+  console.log(req);
+  // 表頭
+  res.writeHead(200,{"Content-Type":"text/plain"});
+  // 內容
+  res.write("Hello");
+  // 結尾
+  res.end();
+}
+// 這邊針對對方給予的資料回傳內容
+// req 這邊是指「請求者」來的資料
+// res 這邊是「我準備要」回傳的資料
+
+const server = http.createServer(requestListener);
+// 當有使用者造訪這個網站,這個網站就會觸發
+// 此處 網站暫定為 127.0.0.1/8080
+server.listen(8080);
+
+// request = 發出網址請求
+// response = 發出伺服器回應
